@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+// this class is replaced with the function below 
 // class Square extends React.Component {
 
 //     // learning about the constructor
@@ -24,6 +25,9 @@ import './index.css';
 //     }
 //   }
 
+// replacement for class above
+// takes the props passed in to render what 
+// to do on click and what to show on the screen
 function Square(props) {
     return (
         <button className="square" onClick={props.onClick}>
@@ -32,9 +36,10 @@ function Square(props) {
     );
 }
 
-  
+  // what to do/render when the 'Board' is called
   class Board extends React.Component {
 
+    // constructor building state when the class is instantiated
     constructor(props){
         super(props);
         this.state = {
@@ -55,6 +60,9 @@ function Square(props) {
 
     }
 
+    // when rendering, this is what is injected on the page
+    // displays the state of the square
+    // maps the onClick to the custom handleClick method
     renderSquare(i) {
       return ( 
             <Square value={ this.state.squares[i] }
@@ -63,6 +71,9 @@ function Square(props) {
         );  
     }
   
+    // what to render when the class is called
+    // builds the status at the top and builds 
+    // the grid by rendering individual squares 
     render() {
       //const status = 'Next player: X';
       const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
@@ -90,6 +101,8 @@ function Square(props) {
     }
   }
   
+  // main class
+  // calls the 'Board' class, wrapped in divs, to render
   class Game extends React.Component {
     render() {
       return (
@@ -107,7 +120,7 @@ function Square(props) {
   }
   
   // ========================================
-  
+  // game is the main tag - this tells React to file the Game class
   ReactDOM.render(
     <Game />,
     document.getElementById('root')
